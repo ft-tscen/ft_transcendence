@@ -1,12 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { Response } from 'express';
 
 @Injectable()
 export class LoginService {
-	private OAUTH_URL =
-		'https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-f56ffffe5da02f0a5b72cc17bc390f649cb9489915308f6447ffe7c80feb1f53&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin%2Fredirect&response_type=code';
-
-	oauth(res: any) {
-		return res.status(302).redirect(this.OAUTH_URL);
+	oauth(res: Response) {
+		return res.status(302).redirect(process.env.OAUTH_URL);
 	}
 
 	async getToken(uid: string, secret: string, code: string) {
