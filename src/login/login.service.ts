@@ -23,7 +23,7 @@ export class LoginService {
 			code +
 			'&' +
 			'redirect_uri=' +
-			'http://localhost:3000/login/redirect' +
+			process.env.REDIRECT_URL +
 			'&' +
 			'scope=public';
 
