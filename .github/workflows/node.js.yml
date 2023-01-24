@@ -21,8 +21,7 @@ jobs:
       with:
         node-version: 18.13.0
         cache: 'npm'
-    - name: Setup TypeScript
-      uses: Tyler887/TypeScript-GitHub-Actions@1.0
-      
+        
+    - run: npm i -g @nestjs/cli
     - run: npm run build --if-present
     - run: npm test
