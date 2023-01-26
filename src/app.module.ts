@@ -13,9 +13,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 			type: 'postgres',
 			host: process.env.PSQL_HOST,
 			port: Number(process.env.PSQL_PORT),
-			username: process.env.POSTGRES_USER,
+			username: process.env.PSQL_USER,
 			password: process.env.POSTGRES_PASSWORD,
-			database: process.env.POSTGRES_DB,
+			database: process.env.PSQL_NAME,
 			synchronize: true,
 			// 데이터 베이스에서 모듈의 현재상태로 마이크레이션
 			logging: false,
