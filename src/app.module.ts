@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 import { LoginModule } from './login/login.module';
 import { IndexModule } from './index/index.module';
-import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersController } from './users/users.controller';
+import { UsersService } from './users/users.service';
+import { EmailService } from './email/email.service';
 
 @Module({
 	imports: [
 		LoginModule,
 		IndexModule,
-		UserModule,
 		TypeOrmModule.forRoot({
 			type: 'postgres',
 			host: process.env.PSQL_HOST,
@@ -22,7 +23,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 			entities: ['dist/**/*.entity.{ts,js}'],
 		}),
 	],
-	controllers: [],
-	providers: [],
+	controllers: [UsersController],
+	providers: [UsersService, EmailService],
 })
 export class AppModule {}
